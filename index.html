@@ -73,6 +73,24 @@
   .cta .phone a { color:var(--accent-hi); text-decoration:none; }
   .cta p { color:var(--muted); }
 
+  /* Audit form */
+  .audit-form { background:var(--panel); border:1px solid var(--line); border-radius:8px;
+                padding:2.2rem 2rem; max-width:760px; margin:2.4rem auto 0; text-align:left; }
+  .audit-form .grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .field { display:flex; flex-direction:column; gap:.35rem; }
+  .field.full { grid-column:1/-1; }
+  .field label { font-size:.8rem; font-weight:600; letter-spacing:.5px; text-transform:uppercase; color:var(--ink); }
+  .field input, .field select {
+    font-family:'Poppins',Arial,sans-serif; font-size:.95rem; color:var(--ink);
+    background:#fff; border:1px solid var(--line); border-radius:6px; padding:.7rem .9rem; width:100%;
+  }
+  .field input:focus, .field select:focus { outline:2px solid var(--accent); outline-offset:0; border-color:var(--accent); }
+  .audit-form .btn { border:0; cursor:pointer; width:100%; margin-top:1.4rem; font-family:'Poppins',Arial,sans-serif; }
+  .audit-form .fine { color:var(--muted); font-size:.78rem; text-align:center; margin-top:.9rem; }
+  .or-divider { color:var(--muted); font-size:.9rem; margin:2rem 0 0; }
+
+  @media (max-width:600px) { .audit-form .grid { grid-template-columns:1fr; } }
+
   /* Consumer strip */
   .consumer { background:var(--panel); border-top:1px solid var(--line); padding:2rem 0; text-align:center; }
   .consumer p { color:var(--muted); font-size:.85rem; max-width:720px; margin:0 auto; }
@@ -170,14 +188,92 @@
       </div>
       <div class="faq-item">
         <h3>What does it cost?</h3>
-        <p>Nothing upfront and no monthly fee for the campaign. We charge a flat fee per customer who actually comes back and pays you. It's quoted before we start, after the free audit shows what your list is worth.</p>
+        <p>Nothing upfront and no monthly fee for the campaign. We charge a flat fee per customer who actually comes back and pays you. It's quoted before we start, after the free audit shows what your list is worth. <a href="#audit" style="color:var(--accent-hi)">Request your free audit here</a>.</p>
       </div>
     </div>
   </section>
 
   <section class="cta" id="audit">
     <h2>Get Your Free Dead List Profit Audit</h2>
-    <p>Call or text and ask for the audit. Ten minutes to say yes, zero to lose.</p>
+    <p>Tell us where to send it. We'll show you what your dead list is worth within 24 hours.</p>
+
+    <form class="audit-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY">
+      <input type="hidden" name="subject" value="New Dead List Audit request — rebookedco.com">
+      <input type="hidden" name="from_name" value="Rebooked Co Website">
+      <input type="hidden" name="redirect" value="https://rebookedco.com/thanks.html">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="grid">
+        <div class="field">
+          <label for="f-name">Your Name</label>
+          <input id="f-name" name="name" type="text" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="f-biz">Business Name</label>
+          <input id="f-biz" name="business_name" type="text" required autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone</label>
+          <input id="f-phone" name="phone" type="tel" required autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="f-niche">What Kind of Business?</label>
+          <select id="f-niche" name="niche" required>
+            <option value="" selected disabled>Choose one</option>
+            <option>Pest Control</option>
+            <option>Pool Service</option>
+            <option>Lawn Care</option>
+            <option>HVAC</option>
+            <option>Other Home Service</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-software">What Do You Run the Business On?</label>
+          <select id="f-software" name="software">
+            <option value="" selected disabled>Choose one</option>
+            <option>Jobber</option>
+            <option>PestPac</option>
+            <option>FieldRoutes</option>
+            <option>Housecall Pro</option>
+            <option>ServiceTitan</option>
+            <option>Spreadsheets</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-count">Roughly How Many Past Customers?</label>
+          <select id="f-count" name="past_customer_count">
+            <option value="" selected disabled>Choose one</option>
+            <option>Under 200</option>
+            <option>200 – 500</option>
+            <option>500 – 1,000</option>
+            <option>1,000 – 5,000</option>
+            <option>Over 5,000</option>
+            <option>Not sure</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-lastcontact">Last Time You Contacted Your Old List?</label>
+          <select id="f-lastcontact" name="last_contacted">
+            <option value="" selected disabled>Choose one</option>
+            <option>In the last 3 months</option>
+            <option>3 – 12 months ago</option>
+            <option>Over a year ago</option>
+            <option>Never</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn big" type="submit">Send Me My Free Audit</button>
+      <p class="fine">Free, whether you hire us or not. Your data stays yours &mdash; we never sell or share it. <a href="privacy-policy.html" style="color:var(--accent-hi)">Privacy Policy</a></p>
+    </form>
+
+    <p class="or-divider">Prefer to talk? Call or text and ask for the audit.</p>
     <div class="phone"><a href="tel:+15715137639">(571) 513-7639</a></div>
     <p>Rebooked Co · Serving independent home service businesses</p>
   </section>
