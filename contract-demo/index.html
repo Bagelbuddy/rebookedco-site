@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contract Intelligence Demo</title>
+<style>
+  :root { 
+  --bg:#f6f7f9; --panel:#ffffff; --ink:#1a1d21; --muted:#616a75; --line:#e4e7eb;
+  --accent:#2f5bea; --chip:#eef1f6; --chip-ink:#2b3a52;
+  --ok:#157a49; --ok-bg:#e6f4ec; --amber:#9a6100; --amber-bg:#fdf0dc; --blue:#1f5fae; --blue-bg:#e6eefb; --radius:14px; --maxw:860px; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { 
+  --bg:#0f1216; --panel:#171b21; --ink:#e9edf2; --muted:#98a2b0; --line:#262c34;
+  --accent:#6f92ff; --chip:#1e2530; --chip-ink:#c3d0e4;
+  --ok:#6ddf9f; --ok-bg:#10301f; --amber:#f0c073; --amber-bg:#3a2a0e; --blue:#8fb6f2; --blue-bg:#12233c; } }
+  :root[data-theme="dark"] { 
+  --bg:#0f1216; --panel:#171b21; --ink:#e9edf2; --muted:#98a2b0; --line:#262c34;
+  --accent:#6f92ff; --chip:#1e2530; --chip-ink:#c3d0e4;
+  --ok:#6ddf9f; --ok-bg:#10301f; --amber:#f0c073; --amber-bg:#3a2a0e; --blue:#8fb6f2; --blue-bg:#12233c; }
+  :root[data-theme="light"] { 
+  --bg:#f6f7f9; --panel:#ffffff; --ink:#1a1d21; --muted:#616a75; --line:#e4e7eb;
+  --accent:#2f5bea; --chip:#eef1f6; --chip-ink:#2b3a52;
+  --ok:#157a49; --ok-bg:#e6f4ec; --amber:#9a6100; --amber-bg:#fdf0dc; --blue:#1f5fae; --blue-bg:#e6eefb; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font:15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { max-width:var(--maxw); margin:0 auto; padding:32px 20px 64px; }
+  header h1 { font-size:24px; margin:0 0 6px; letter-spacing:-0.01em; }
+  header p.sub { color:var(--muted); margin:0 0 24px; font-size:15px; }
+  .how { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:0 0 28px; }
+  @media (max-width:640px) { .how { grid-template-columns:1fr; } }
+  .how div { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
+  .how b { display:block; font-size:13px; margin-bottom:2px; }
+  .how span { color:var(--muted); font-size:12.5px; }
+  .ask { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px; margin-bottom:18px; }
+  .ask label { font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
+  .ask input { width:100%; margin-top:8px; padding:12px 14px; font-size:15px; color:var(--ink);
+    background:var(--bg); border:1px solid var(--line); border-radius:10px; }
+  .ask input:focus { outline:2px solid var(--accent); outline-offset:1px; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  .chip { cursor:pointer; border:1px solid var(--line); background:var(--chip); color:var(--chip-ink);
+    padding:7px 12px; border-radius:999px; font-size:13px; }
+  .chip:hover { border-color:var(--accent); }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:18px 18px 6px; margin-bottom:16px; }
+  .q { color:var(--muted); font-size:13px; margin-bottom:8px; }
+  .headline { font-size:19px; font-weight:650; letter-spacing:-0.01em; display:flex; align-items:center; gap:10px; flex-wrap:wrap; font-variant-numeric:tabular-nums; }
+  .badge { font-size:12px; font-weight:600; padding:3px 10px; border-radius:999px; white-space:nowrap; }
+  .badge.verified { color:var(--ok); background:var(--ok-bg); }
+  .badge.provisional { color:var(--amber); background:var(--amber-bg); }
+  .badge.grounded { color:var(--blue); background:var(--blue-bg); }
+  .audit { color:var(--muted); font-size:13px; margin:10px 0 6px; font-variant-numeric:tabular-nums; }
+  details { margin:6px 0 12px; }
+  summary { cursor:pointer; font-size:13px; color:var(--accent); user-select:none; }
+  .ev { border-left:2px solid var(--line); margin:10px 0 4px; padding:2px 0 2px 12px; }
+  .ev .m { font-size:12px; color:var(--muted); }
+  .ev .s { font-size:13.5px; margin-top:2px; }
+  footer { color:var(--muted); font-size:12.5px; margin-top:26px; border-top:1px solid var(--line); padding-top:14px; }
+  .empty { color:var(--muted); font-size:14px; padding:8px 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Contract Intelligence</h1>
+    <p class="sub">Ask your whole contract library a question, by meaning or for a number you can trust. Every answer links to the exact contracts and sentences behind it, and the system checks its own work.</p>
+  </header>
+
+  <div class="how">
+    <div><b>Reads every contract</b><span>Parties, dates, renewals, clauses, and any topic, from PDFs, scans, and Word files.</span></div>
+    <div><b>Counts, doesn't guess</b><span>Totals come from the database, not a language model, so a count is real and repeatable.</span></div>
+    <div><b>Checks itself</b><span>A second independent pass tries to refute every answer before you see it.</span></div>
+  </div>
+
+  <div class="ask">
+    <label for="q">Ask a question</label>
+    <input id="q" autocomplete="off" placeholder="e.g. how many contracts contain an indemnification clause?" />
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <div id="results"></div>
+
+  <footer>
+    Demo on a small sample corpus with pre-computed results. No data leaves this page. In the full product, the same engine answers any question live on your own contracts, inside your own cloud.
+  </footer>
+</div>
+<script>
+  const ANSWERS = [{"question":"Which vendor agreements auto-renew in the next 90 days?","headline":"2 vendor agreements auto-renew in the next 90 days","badge":"verified","audit":"Structured SQL over verified renewal dates, 2 matched (as of 2026-07-17).","evidence":[{"contractId":"c1","title":"Master Services Agreement, Acme Corp / Globex Ltd.","snippet":"Auto-renews on 2026-09-01.","page":1},{"contractId":"c4","title":"Vendor Supply Agreement, Stark Industries","snippet":"Auto-renews on 2026-08-15.","page":1}]},{"question":"How many contracts contain a indemnification clause?","headline":"3 contracts contain a indemnification clause","badge":"verified","audit":"3, checked 3/3 matches; checked 0 nearest + 2 random non-matches, 0 missed","evidence":[{"contractId":"c1","title":"Master Services Agreement, Acme Corp / Globex Ltd.","snippet":"Globex shall defend, indemnify and hold harmless Acme from any third-party claim arising out of infringement of intellectual property rights.","page":7},{"contractId":"c2","title":"Software License Agreement, Initech, Inc.","snippet":"Each party shall indemnify the other against third-party claims arising from its breach of this Agreement.","page":8},{"contractId":"c4","title":"Vendor Supply Agreement, Stark Industries","snippet":"Stark shall indemnify and hold the Buyer harmless from any product-liability claim arising from defects in the supplied goods.","page":6}]},{"question":"How many contracts mention alcoholism?","headline":"At least 2 contracts mention alcoholism","badge":"provisional","audit":"at least 2, checked 1/1 matches; checked 1 nearest + 3 random non-matches, 1 missed, re-check in progress","evidence":[{"contractId":"c1","title":"Master Services Agreement, Acme Corp / Globex Ltd.","snippet":"Contractor personnel shall comply with Acme's drug and alcohol policy while on-site.","page":11},{"contractId":"c3","title":"Mutual Non-Disclosure Agreement, Umbrella Co.","snippet":"Personnel with access to Confidential Information shall abide by the company substance abuse policy and maintain professional conduct at all times.","page":4}]},{"question":"which contracts limit our liability or exclude consequential damages","headline":"Top match: Software License Agreement, Initech, Inc.","badge":"grounded","audit":"Answer grounded in 3 retrieved passages; every cited snippet is quoted verbatim from a stored chunk.","evidence":[{"contractId":"c2","title":"Software License Agreement, Initech, Inc.","snippet":"Limitation of liability. In no event shall Initech's aggregate liability under this Agreement exceed the fees paid in the twelve months preceding the claim, and Initech shall not be liable for any consequential, indirect, special or incidental damages, however caused.","page":9},{"contractId":"c1","title":"Master Services Agreement, Acme Corp / Globex Ltd.","snippet":"While on Acme premises, Contractor personnel shall comply with Acme's drug and alcohol policy, including prohibitions on the consumption of alcohol during working hours.","page":11},{"contractId":"c5","title":"Commercial Lease, Wayne Enterprises","snippet":"Tenant may terminate this Lease for convenience upon ninety (90) days written notice to Landlord, subject to payment of rent through the termination date.","page":5}]},{"question":"Summarize: Software License Agreement, Initech, Inc.","headline":"Two-year software license from Initech at $48,000/year, renewing June 2027. Initech's total liability is capped at the fees paid in the prior twelve months and excludes consequential damages. Includes a mutual indemnification for third-party claims. Governed by California law.","badge":"verified","audit":"Faithfulness check passed, no amount or figure appears in the summary that is absent from the contract.","evidence":[{"contractId":"c2","title":"Software License Agreement, Initech, Inc.","snippet":"This Software License Agreement is entered into as of June 1, 2025 between Initech, Inc. and the Customer for the licensed analytics platform.","page":1},{"contractId":"c2","title":"Software License Agreement, Initech, Inc.","snippet":"Each party shall indemnify, defend and hold the other harmless against third-party claims arising from its material breach of this Agreement.","page":8}]}];
+  const BADGES = { verified: "✓ self-verified", provisional: "⏳ being verified", grounded: "✓ grounded" };
+  function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function renderAnswer(a) {
+    const card = el("div", "card");
+    card.appendChild(el("div", "q", "Q: " + a.question));
+    const head = el("div", "headline");
+    head.appendChild(el("span", null, a.headline));
+    head.appendChild(el("span", "badge " + a.badge, BADGES[a.badge] || a.badge));
+    card.appendChild(head);
+    card.appendChild(el("div", "audit", a.audit));
+    if (a.evidence && a.evidence.length) {
+      const det = el("details");
+      det.appendChild(el("summary", null, "Show the evidence →"));
+      a.evidence.forEach(function (e) {
+        const ev = el("div", "ev");
+        ev.appendChild(el("div", "m", e.contractId + " · " + e.title + " · p." + e.page));
+        ev.appendChild(el("div", "s", "“" + e.snippet + "”"));
+        det.appendChild(ev);
+      });
+      card.appendChild(det);
+    }
+    return card;
+  }
+  function show(a) { const box = document.getElementById("results"); box.innerHTML = ""; box.appendChild(renderAnswer(a)); }
+  function route(text) {
+    const t = text.toLowerCase();
+    const hit = ANSWERS.find(function (a) {
+      const q = a.question.toLowerCase();
+      const words = t.split(/[^a-z0-9]+/).filter(function (w) { return w.length > 3; });
+      return words.some(function (w) { return q.includes(w); });
+    });
+    const box = document.getElementById("results"); box.innerHTML = "";
+    if (hit) { box.appendChild(renderAnswer(hit)); }
+    else { box.appendChild(el("div", "empty", "This sample demo answers the suggested questions above. The full product answers any question live on your contracts.")); }
+  }
+  const chips = document.getElementById("chips");
+  ANSWERS.forEach(function (a) {
+    const c = el("span", "chip", a.question);
+    c.addEventListener("click", function () { document.getElementById("q").value = a.question; show(a); });
+    chips.appendChild(c);
+  });
+  const input = document.getElementById("q");
+  input.addEventListener("keydown", function (e) { if (e.key === "Enter") route(input.value); });
+  show(ANSWERS[1]);
+</script>
+</body>
+</html>
