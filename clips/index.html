@@ -1,93 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clip Review — Social OS Test Batch</title>
+<head><meta charset="UTF-8"><title>Clips Review</title>
 <style>
-  body { background:#0a0a0a; color:#fff; font-family:system-ui; max-width:600px; margin:0 auto; padding:20px; }
-  h1 { font-size:1.2em; color:#aaa; margin-bottom:20px; }
-  .clip { background:#1a1a1a; border-radius:12px; padding:16px; margin-bottom:24px; }
-  .clip h2 { margin:0 0 8px; font-size:1.1em; color:#ffd93b; }
-  .clip p { color:#999; margin:0 0 12px; font-size:0.9em; }
-  video { width:100%; border-radius:8px; background:#000; }
-  .meta { display:flex; gap:12px; margin-top:8px; font-size:0.8em; color:#666; }
-</style>
-</head>
-<body>
-<h1>🧪 Social OS — Test Batch (Jul 27, 2026)</h1>
+  body { background:#0a0a0a; color:#fff; font-family:system-ui; max-width:800px; margin:auto; padding:20px; }
+  .clip { border:1px solid #222; border-radius:12px; padding:20px; margin:20px 0; }
+  .clip.word-by-word { border-color:#ff6b9d; }
+  .clip.tweet-card { border-color:#304128; }
+  video { width:100%; max-height:600px; border-radius:8px; }
+  h1 { font-size:1.2em; margin:0 0 5px; }
+  .reason { color:#888; font-size:0.85em; margin:5px 0; }
+  .format { display:inline-block; padding:2px 8px; border-radius:4px; font-size:0.75em; margin-left:8px; }
+  .format.elongated { background:#ff6b9d22; color:#ff6b9d; }
+  .format.loop { background:#6bff9d22; color:#6bff9d; }
+  .format.tweet-card { background:#30412844; color:#7ab88a; }
+  .outsider-wow { color:#f0c040; font-size:0.8em; margin-top:8px; }
+</style></head><body>
+<h2 style="color:#888">July 28 Batch — Outsider-Wow Picks</h2>
 
-<div class="clip">
-  <h2>#1 · Helicopter Autorotation</h2>
-  <p>"A helicopter can land safely with a dead engine. Here's why." — Tweet-card × Craftsmanship</p>
-  <video controls loop playsinline><source src="helicopter-autorotation.mp4" type="video/mp4"></video>
-  <div class="meta"><span>7.1 MB</span><span>25s</span><span>Source: FlyEurope TV</span></div>
+<div class="clip tweet-card">
+  <h1>#1 Bugatti Wood Carve <span class="format elongated">ELONGATED 23s</span></h1>
+  <video controls src="bugatti-wood-carve.mp4"></video>
+  <div class="reason">"He carved a Bugatti from one solid wood block. No seams. 3,000-grit wet sanding until wood reflects like paint."</div>
+  <div class="outsider-wow">💡 Outsider-Wow: "$19M hypercar... made of wood?" — gap between rough timber and mirror-gloss supercar does all the work. Zero-context viewers get it faster than woodworkers do. Payoff-first format: finished car cold open, then rewind to the block.</div>
 </div>
 
-<div class="clip">
-  <h2>#2 · AlphaGo Move 37</h2>
-  <p>"This AI move was so unexpected, the human champion left the room for 15 minutes." — Tweet-card × Tech</p>
-  <video controls loop playsinline><source src="alphago-move37.mp4" type="video/mp4"></video>
-  <div class="meta"><span>1.7 MB</span><span>16s</span><span>Source: Daniel Estrada</span></div>
+<div class="clip tweet-card">
+  <h1>#2 Plumbing Trick <span class="format loop">LOOP 4s</span></h1>
+  <video controls src="plumbing-trick.mp4"></video>
+  <div class="reason">"The plumbing trick that seals with zero glue. The internal grip ring bites harder the more pressure pushes against it."</div>
+  <div class="outsider-wow">💡 Outsider-Wow: 307x overperform (30M views). Non-plumbers feel "wait, that shouldn't hold" in under 2 seconds. It's a physics violation, not a trade tip. The thing trying to break it is what holds it.</div>
 </div>
 
-<div class="clip">
-  <h2>#3 · Katana Differential Hardening</h2>
-  <p>"This 1,000-year-old sword technique creates two different metals in one blade." — Tweet-card × Craftsmanship</p>
-  <video controls loop playsinline><source src="katana-forging.mp4" type="video/mp4"></video>
-  <div class="meta"><span>4.1 MB</span><span>30s</span><span>Source: Samurai Tavern</span></div>
+<div class="clip tweet-card">
+  <h1>#3 Roof Shoe Grip <span class="format elongated">ELONGATED 15s</span></h1>
+  <video controls src="roof-shoe-grip.mp4"></video>
+  <div class="reason">"These shoes grip a roof too steep to stand on. The sole deforms into the shingle's grit. Not friction. Thousands of tiny mechanical locks."</div>
+  <div class="outsider-wow">💡 Outsider-Wow: Body-level fear response. Steep roof + person not falling = instant tension. 11M views confirms it already cleared the outsider barrier. Escalation beat: normal pitch, then the angle nobody should hold.</div>
 </div>
-</body>
-</html>
-
-<div class="clip" style="border-left: 3px solid #0a8205;">
-  <h2>🤖 Claude-Generated Batch</h2>
-  <p style="color:#0a8205;">Claude picked the clips, wrote the captions. social-os make.mjs rendered them.</p>
-</div>
-
-<div class="clip">
-  <h2>#4 · Tower Crane Self-Build</h2>
-  <p>"Nobody used a crane to build this crane. It built itself, floor by floor." — Claude pick · Tweet-card × Craftsmanship</p>
-  <video controls loop playsinline><source src="crane-self-build.mp4" type="video/mp4"></video>
-  <div class="meta"><span>2.7 MB</span><span>30s</span><span>Source: Cranedude07</span></div>
-</div>
-
-<div class="clip">
-  <h2>#5 · GPS Clock Drift</h2>
-  <p>"GPS clocks tick faster than yours. Without a fix, your map drifts miles daily." — Claude pick · Tweet-card × Tech</p>
-  <video controls loop playsinline><source src="gps-relativity.mp4" type="video/mp4"></video>
-  <div class="meta"><span>2.5 MB</span><span>16s</span><span>Source: SciNews</span></div>
-</div>
-
-<div class="clip">
-  <h2>#6 · Golden Gate Cable</h2>
-  <p>"The Golden Gate Bridge hangs from a single cable. Made of 27,572 individual wires." — Claude pick · Tweet-card × Craftsmanship</p>
-  <video controls loop playsinline><source src="golden-gate-cable.mp4" type="video/mp4"></video>
-  <div class="meta"><span>9.9 MB</span><span>30s</span><span>Source: KPIX CBS News Bay Area</span></div>
-</div>
-
-<div class="clip" style="border-left: 3px solid #ff2e9a;">
-  <h2>🎭 Claude Creative — hublot-skit Batch</h2>
-  <p style="color:#ff2e9a;">Claude made ALL creative decisions. Agent executed rendering only.</p>
-</div>
-
-<div class="clip">
-  <h2>#7 · They Were SO Close 😭</h2>
-  <p>"THEM: we've got this || THEM: *reaching* || THEM: *one inch short* || EVERYONE WATCHING: NOOO" — elongated · 154× multiple</p>
-  <video controls loop playsinline><source src="wholesome-so-close.mp4" type="video/mp4"></video>
-  <div class="meta"><span>11 MB</span><span>14s</span><span>Source: hublotbaggins · 15M views</span></div>
-</div>
-
-<div class="clip">
-  <h2>#8 · This Fish Said NOT TODAY</h2>
-  <p>"HUNTER: easy dinner || FISH: *calculating* || FISH: *NOT TODAY* || HUNTER: HE WAS RIGHT THERE" — elongated · 98× multiple</p>
-  <video controls loop playsinline><source src="wholesome-fish.mp4" type="video/mp4"></video>
-  <div class="meta"><span>7.2 MB</span><span>14s</span><span>Source: hublotbaggins · 9.5M views</span></div>
-</div>
-
-<div class="clip">
-  <h2>#9 · Unique Way to Climb Stairs</h2>
-  <p>"STAIRS: one step at a time || THEM: *has other ideas* || THEM: *ASCENDS ANYWAY* || STAIRS: ok that works too" — loop · 29× multiple</p>
-  <video controls loop playsinline><source src="wholesome-stairs.mp4" type="video/mp4"></video>
-  <div class="meta"><span>12 MB</span><span>14s</span><span>Source: hublotbaggins · 2.8M views</span></div>
-</div>
+</body></html>
