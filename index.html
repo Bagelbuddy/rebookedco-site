@@ -1,296 +1,208 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rebooked | We Bring Back the Customers You Already Paid For</title>
-<meta name="description" content="Done for you customer win back for home service businesses. Pest, pool, HVAC, lawn. You pay nothing unless a customer actually comes back.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rebooked | AI operations layer for service businesses (Visual draft v2)</title>
+<meta name="description" content="Visual prototype v2: editorial layout for Rebooked, a privacy-first AI operations and communications layer for dental and home-service businesses.">
 <style>
-  :root {
-    --bg:#FFFFFF; --panel:#F2F6FC; --accent:#1D5EFF; --accent-hi:#0B46D8;
-    --ink:#0F1B2D; --muted:#5B6B7F; --line:#DFE7F2;
-  }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  html { scroll-behavior:smooth; }
-  body { font-family:'Poppins',Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.6; }
-  .wrap { max-width:1100px; margin:0 auto; padding:0 1.5rem; }
-  .narrow { max-width:760px; margin:0 auto; }
-
-  /* Nav */
-  nav { display:flex; justify-content:space-between; align-items:center; padding:1.4rem 0; }
-  .logo { font-weight:800; font-size:1.15rem; letter-spacing:.5px; text-decoration:none; color:var(--ink); }
-  .logo span { color:var(--accent-hi); }
-  .btn { display:inline-block; background:var(--accent); color:#fff; text-decoration:none; font-weight:600;
-         padding:.85rem 2rem; border-radius:999px; font-size:.95rem; transition:background .15s; }
-  .btn:hover { background:var(--accent-hi); }
-  .btn.big { padding:1.05rem 2.6rem; font-size:1.05rem; }
-  nav .btn { padding:.6rem 1.4rem; font-size:.85rem; }
-
-  /* Hero */
-  header.hero { text-align:center; padding:5.5rem 0 6rem; }
-  .eyebrow { color:var(--accent-hi); font-weight:600; font-size:.85rem; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:1.2rem; }
-  h1 { font-size:clamp(2rem, 5.2vw, 3.4rem); font-weight:800; text-transform:uppercase; line-height:1.15; letter-spacing:-.5px; }
-  h1 em { color:var(--accent-hi); font-style:normal; }
-  .hero p.sub { color:var(--muted); font-size:1.1rem; max-width:640px; margin:1.6rem auto 2.4rem; }
-  .hero .risk { display:block; margin-top:1rem; color:var(--muted); font-size:.85rem; }
-
-  /* Stats */
-  .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; padding:0 0 5rem; }
-  .stat { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:2.2rem 1.4rem; text-align:center; }
-  .stat .num { font-size:2.4rem; font-weight:800; color:var(--accent-hi); line-height:1.1; }
-  .stat .lbl { color:var(--muted); font-size:.9rem; margin-top:.5rem; }
-  .stats .src { grid-column:1/-1; text-align:center; color:var(--muted); font-size:.75rem; opacity:.7; }
-
-  /* Sections */
-  section { padding:4.5rem 0; border-top:1px solid var(--line); }
-  h2 { font-size:clamp(1.6rem, 3.6vw, 2.6rem); font-weight:700; text-align:center; text-transform:uppercase; margin-bottom:.8rem; }
-  .lede { color:var(--muted); text-align:center; max-width:640px; margin:0 auto 3rem; }
-
-  /* Steps */
-  .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
-  .card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:2rem 1.6rem; }
-  .card .step { color:var(--accent-hi); font-weight:700; font-size:.8rem; letter-spacing:2px; text-transform:uppercase; }
-  .card h3 { font-size:1.15rem; font-weight:700; margin:.7rem 0 .6rem; }
-  .card p { color:var(--muted); font-size:.95rem; }
-
-  /* Guarantee */
-  .guarantee { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:3rem 2rem; text-align:center; }
-  .guarantee h2 { margin-bottom:1rem; }
-  .guarantee p.big { font-size:1.25rem; max-width:680px; margin:0 auto 1rem; font-weight:600; }
-  .guarantee p.small { color:var(--muted); max-width:600px; margin:0 auto; font-size:.95rem; }
-
-  /* FAQ */
-  .faq-item { border-bottom:1px solid var(--line); padding:1.4rem 0; }
-  .faq-item h3 { font-size:1.05rem; font-weight:600; }
-  .faq-item p { color:var(--muted); font-size:.95rem; margin-top:.5rem; }
-
-  /* CTA */
-  .cta { text-align:center; }
-  .cta .phone { font-size:1.6rem; font-weight:800; margin:1.4rem 0 .4rem; }
-  .cta .phone a { color:var(--accent-hi); text-decoration:none; }
-  .cta p { color:var(--muted); }
-
-  /* Audit form */
-  .audit-form { background:var(--panel); border:1px solid var(--line); border-radius:8px;
-                padding:2.2rem 2rem; max-width:760px; margin:2.4rem auto 0; text-align:left; }
-  .audit-form .grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-  .field { display:flex; flex-direction:column; gap:.35rem; }
-  .field.full { grid-column:1/-1; }
-  .field label { font-size:.8rem; font-weight:600; letter-spacing:.5px; text-transform:uppercase; color:var(--ink); }
-  .field input, .field select {
-    font-family:'Poppins',Arial,sans-serif; font-size:.95rem; color:var(--ink);
-    background:#fff; border:1px solid var(--line); border-radius:6px; padding:.7rem .9rem; width:100%;
-  }
-  .field input:focus, .field select:focus { outline:2px solid var(--accent); outline-offset:0; border-color:var(--accent); }
-  .audit-form .btn { border:0; cursor:pointer; width:100%; margin-top:1.4rem; font-family:'Poppins',Arial,sans-serif; }
-  .audit-form .fine { color:var(--muted); font-size:.78rem; text-align:center; margin-top:.9rem; }
-  .or-divider { color:var(--muted); font-size:.9rem; margin:2rem 0 0; }
-
-  @media (max-width:600px) { .audit-form .grid { grid-template-columns:1fr; } }
-
-  /* Consumer strip */
-  .consumer { background:var(--panel); border-top:1px solid var(--line); padding:2rem 0; text-align:center; }
-  .consumer p { color:var(--muted); font-size:.85rem; max-width:720px; margin:0 auto; }
-  .consumer strong { color:var(--ink); }
-
-  /* Footer */
-  footer { padding:2.5rem 0 3rem; text-align:center; }
-  footer a { color:var(--muted); text-decoration:none; margin:0 .9rem; font-size:.85rem; }
-  footer a:hover { color:var(--ink); }
-  footer .copy { color:var(--muted); font-size:.8rem; margin-top:1rem; opacity:.7; }
-
-  @media (max-width:760px) {
-    .stats, .cards { grid-template-columns:1fr; }
-    header.hero { padding:3.5rem 0 4rem; }
-    nav .btn { display:none; }
-  }
+:root{--navy:#0b1f3a;--navy-2:#14305a;--blue:#1757d4;--blue-2:#0f45ad;--ice:#e9f1fc;--ice-2:#d6e5f8;--line:#d9e3f0;--ink:#0b1f3a;--muted:#55657d;--white:#fff;--paper:#f7f9fc;--warm:#f0a23b;--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;--sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55}a{color:inherit}
+.shell{max-width:1200px;margin:auto;padding:0 28px}
+.draftbar{background:var(--navy);color:#c9d7ec;font-size:12px;text-align:center;padding:8px 16px}.draftbar b{color:#fff}
+.top{display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.03em;text-decoration:none}.mark{width:30px;height:30px;border-radius:8px;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:14px}
+.nav{display:flex;gap:26px;font-size:14px;color:var(--muted)}.nav a{text-decoration:none}.nav .cta{background:var(--navy);color:#fff;padding:10px 16px;border-radius:6px;font-weight:700}
+/* Editorial split hero */
+.hero{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;padding:72px 0 64px;align-items:start}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--blue)}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(44px,5.6vw,76px);line-height:1.02;letter-spacing:-.02em;margin:18px 0 22px}.hero h1 i{color:var(--blue)}
+.lede{font-size:19px;color:var(--muted);max-width:520px;margin:0}
+.byline{display:flex;gap:16px;margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}.byline b{color:var(--ink);display:block;font-size:14px}
+.btns{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:6px;font-weight:700;font-size:15px;text-decoration:none;border:1px solid var(--navy)}.btn.p{background:var(--blue);border-color:var(--blue);color:#fff}.btn.s{background:#fff}
+/* Command center visual */
+.figure{margin:0}.figcap{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);margin-bottom:10px}
+.tag{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:#fff6e8;color:#8a5a12;border:1px solid #f4d39f;padding:3px 8px;border-radius:4px}
+.app{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 30px 60px -30px rgba(11,31,58,.35);overflow:hidden}
+.apphead{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);font-size:12px}.apphead strong{font-size:13px}.live{display:inline-flex;align-items:center;gap:6px;color:var(--blue);font-weight:700}.live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 3px var(--ice-2)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;padding:12px 16px;background:var(--ice);border-bottom:1px solid var(--line)}
+.chip{font:600 12px var(--sans);border:1px solid var(--ice-2);background:#fff;color:var(--navy);padding:6px 10px;border-radius:999px;cursor:pointer;min-height:32px}.chip[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.appgrid{display:grid;grid-template-columns:1.15fr .85fr}
+.col{padding:16px}.col+.col{border-left:1px solid var(--line);background:#fbfcfe}
+.h{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7a8aa3;margin:0 0 10px}
+.row{display:grid;grid-template-columns:30px 1fr auto;gap:10px;padding:10px 0;border-top:1px solid #eef2f8;align-items:start}.row:first-of-type{border-top:0}
+.av{width:30px;height:30px;border-radius:6px;background:var(--ice);color:var(--blue-2);display:grid;place-items:center;font-size:10px;font-weight:800}
+.row b{font-size:12.5px;display:block}.row p{margin:2px 0 0;font-size:12px;color:var(--muted)}.st{font-size:10px;font-weight:800;color:var(--blue);white-space:nowrap}.st.w{color:#8a5a12}
+.slot{display:flex;justify-content:space-between;font-size:12px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;margin-bottom:6px;background:#fff}.slot span{color:var(--muted)}.slot.new{border-color:var(--blue);background:var(--ice)}
+.owned{margin-top:12px;background:var(--navy);color:#dbe6f6;border-radius:8px;padding:12px;font-size:12px}.owned b{color:#fff;display:block;margin-bottom:4px}
+/* Sections */
+.verticals{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:14px;color:var(--muted)}.verticals b{color:var(--ink)}
+.sec{padding:96px 0;display:grid;grid-template-columns:.75fr 1.25fr;gap:72px}
+.sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(34px,4vw,52px);line-height:1.05;margin:12px 0 16px;letter-spacing:-.01em}.sec .intro{color:var(--muted);font-size:17px}
+.list{border-top:2px solid var(--navy)}.item{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}.num{font-family:var(--serif);font-size:26px;color:var(--blue)}.item h3{margin:0 0 4px;font-size:18px}.item p{margin:0;color:var(--muted);font-size:15px}
+.band{background:var(--navy);color:#dbe6f6}.band .sec{padding:84px 0}.band h2{color:#fff}.band .intro{color:#aebfd8}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#28426c;border:1px solid #28426c}.cols3 div{background:var(--navy);padding:22px}.cols3 h3{color:#fff;font-size:16px;margin:0 0 6px}.cols3 p{margin:0;font-size:14px;color:#aebfd8}
+/* Form */
+.formwrap{padding:96px 0}.formgrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px}
+form{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}.full{grid-column:1/-1}
+label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}label .req{color:var(--blue)}
+input,select,textarea{width:100%;font:16px var(--sans);color:var(--ink);background:#fff;border:1px solid #c5d3e6;border-radius:6px;padding:12px;min-height:48px}textarea{min-height:110px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--ice-2);border-color:var(--blue)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.submit{margin-top:20px;width:100%;min-height:52px;border:0;border-radius:6px;background:var(--blue);color:#fff;font:700 16px var(--sans);cursor:pointer}.submit:disabled{opacity:.6;cursor:wait}
+.note{font-size:12.5px;color:var(--muted);margin-top:14px}
+.msg{margin-top:16px;padding:14px;border-radius:8px;font-size:14px}.msg.ok{background:var(--ice);border:1px solid var(--blue);color:var(--navy)}.msg.err{background:#fff4f2;border:1px solid #e3a59a;color:#7a2416}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:960px){.hero,.sec,.formgrid{grid-template-columns:1fr;gap:40px}.hero{padding:48px 0}.sec,.formwrap{padding:64px 0}.cols3{grid-template-columns:1fr}.nav a:not(.cta){display:none}}
+@media(max-width:640px){.shell{padding:0 18px}.appgrid{grid-template-columns:1fr}.col+.col{border-left:0;border-top:1px solid var(--line)}.fields{grid-template-columns:1fr}form{padding:20px}.byline{flex-direction:column}.btn{width:100%}}
 </style>
 </head>
 <body>
+<div class="draftbar"><b>Visual draft v2</b> &middot; Editorial layout &middot; All product screens show synthetic demo data</div>
+<div class="shell">
+<header class="top">
+  <a class="brand" href="#top"><span class="mark">R</span>rebooked</a>
+  <nav class="nav"><a href="#how">How it works</a><a href="#data">Your data</a><a class="cta" href="#demo">Request a demo</a></nav>
+</header>
 
-<div class="wrap">
-  <nav>
-    <a class="logo" href="/">REBOOKED</a>
-    <a class="btn" href="#audit">Get My Free Dead List Audit</a>
-  </nav>
-
-  <header class="hero">
-    <div class="eyebrow">For Home Service Businesses: Pest · Pool · HVAC · Lawn</div>
-    <h1>How much revenue did you<br>write off last year?</h1>
-    <p class="sub">Your cancelled and quiet customers are money you already paid to earn. Rebooked brings them back with personal texts sent from your business. Done for you, nothing to learn, nothing to install.</p>
-    <a class="btn big" href="#audit">Show Me What's In My Dead List for Free</a>
-    <span class="risk">$0 upfront. No monthly fee for the campaign. You pay only when a customer comes back and pays you first.</span>
-  </header>
-
-  <div class="stats">
-    <div class="stat">
-      <div class="num">60–70%</div>
-      <div class="lbl">of past customers say yes when the owner reaches back out. Cold leads: about 5%</div>
-    </div>
-    <div class="stat">
-      <div class="num">~5×</div>
-      <div class="lbl">cheaper to win back a past customer than to buy a new one</div>
-    </div>
-    <div class="stat">
-      <div class="num">$0</div>
-      <div class="lbl">upfront. We get paid per customer who actually comes back</div>
-    </div>
-    <div class="src">Industry benchmarks for winning back customers in recurring home services.</div>
-  </div>
-
-  <section>
-    <h2>How It Works</h2>
-    <p class="lede">Three steps. Your only job is servicing the customers who come back.</p>
-    <div class="cards">
-      <div class="card">
-        <div class="step">Step 1</div>
-        <h3>Free Dead List Profit Audit</h3>
-        <p>We run your customer list and show you exactly how much recoverable revenue is sitting in cancelled, lapsed, and quiet accounts, named and priced to the dollar. Free, whether you hire us or not.</p>
-      </div>
-      <div class="card">
-        <div class="step">Step 2</div>
-        <h3>We Run The Win Back</h3>
-        <p>Personal texts, written and sent as your business, to customers who already know you. Only the ones who agreed to hear from you, every message compliant, and opt outs honored instantly.</p>
-      </div>
-      <div class="card">
-        <div class="step">Step 3</div>
-        <h3>You Pay On Results</h3>
-        <p>A customer rebooks, gets serviced, and pays you. Then we get our fee. No reactivations, no bill. Your dead list becomes your cheapest source of booked jobs.</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="guarantee">
-      <h2>The Guarantee</h2>
-      <p class="big">If we don't put back more gross profit than we cost you in the first 30 days, you owe us nothing.</p>
-      <p class="small">And we only work with one company per service area. When your area is taken, it's taken.</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="narrow">
-      <h2>FAQs</h2>
-      <div class="faq-item">
-        <h3>What do you need from me?</h3>
-        <p>A customer list export from whatever you already use (PestPac, Jobber, ServiceTitan, or spreadsheets, all fine) and about 20 minutes. We handle everything else. Your data stays yours.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Is texting my old customers allowed?</h3>
-        <p>Yes, done right. We only message customers who gave your business their number and agreed to be contacted, every text identifies your business, and STOP is honored instantly and automatically. Compliance is built into the audit before a single message goes out.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Will it sound like a robot?</h3>
-        <p>No. Messages read like you texted them yourself: short, personal, from the owner. Your customers reply like it's you, because as far as they can tell, it is.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What does it cost?</h3>
-        <p>Nothing upfront and no monthly fee for the campaign. We charge a flat fee per customer who actually comes back and pays you. It's quoted before we start, after the free audit shows what your list is worth. <a href="#audit" style="color:var(--accent-hi)">Request your free audit here</a>.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta" id="audit">
-    <h2>Get Your Free Dead List Profit Audit</h2>
-    <p>Tell us where to send it. We'll show you what your dead list is worth within 24 hours.</p>
-
-    <form class="audit-form" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY">
-      <input type="hidden" name="subject" value="New Dead List Audit request — rebookedco.com">
-      <input type="hidden" name="from_name" value="Rebooked Website">
-      <input type="hidden" name="redirect" value="https://rebookedco.com/thanks.html">
-      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-
-      <div class="grid">
-        <div class="field">
-          <label for="f-name">Your Name</label>
-          <input id="f-name" name="name" type="text" required autocomplete="name">
-        </div>
-        <div class="field">
-          <label for="f-biz">Business Name</label>
-          <input id="f-biz" name="business_name" type="text" required autocomplete="organization">
-        </div>
-        <div class="field">
-          <label for="f-email">Email</label>
-          <input id="f-email" name="email" type="email" required autocomplete="email">
-        </div>
-        <div class="field">
-          <label for="f-phone">Phone</label>
-          <input id="f-phone" name="phone" type="tel" required autocomplete="tel">
-        </div>
-        <div class="field">
-          <label for="f-niche">What Kind of Business?</label>
-          <select id="f-niche" name="niche" required>
-            <option value="" selected disabled>Choose one</option>
-            <option>Pest Control</option>
-            <option>Pool Service</option>
-            <option>Lawn Care</option>
-            <option>HVAC</option>
-            <option>Other Home Service</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="f-software">What Do You Run the Business On?</label>
-          <select id="f-software" name="software">
-            <option value="" selected disabled>Choose one</option>
-            <option>Jobber</option>
-            <option>PestPac</option>
-            <option>FieldRoutes</option>
-            <option>Housecall Pro</option>
-            <option>ServiceTitan</option>
-            <option>Spreadsheets</option>
-            <option>Other / Not Sure</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="f-count">Roughly How Many Past Customers?</label>
-          <select id="f-count" name="past_customer_count">
-            <option value="" selected disabled>Choose one</option>
-            <option>Under 200</option>
-            <option>200 – 500</option>
-            <option>500 – 1,000</option>
-            <option>1,000 – 5,000</option>
-            <option>Over 5,000</option>
-            <option>Not sure</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="f-lastcontact">Last Time You Contacted Your Old List?</label>
-          <select id="f-lastcontact" name="last_contacted">
-            <option value="" selected disabled>Choose one</option>
-            <option>In the last 3 months</option>
-            <option>3 – 12 months ago</option>
-            <option>Over a year ago</option>
-            <option>Never</option>
-          </select>
-        </div>
-      </div>
-
-      <button class="btn big" type="submit">Send Me My Free Audit</button>
-      <p class="fine">Free, whether you hire us or not. Your data stays yours &mdash; we never sell or share it. <a href="privacy-policy.html" style="color:var(--accent-hi)">Privacy Policy</a></p>
-    </form>
-
-    <p class="or-divider">Prefer to talk? Call or text and ask for the audit.</p>
-    <div class="phone"><a href="tel:+15715137639">(571) 513-7639</a></div>
-    <p>Rebooked · Serving independent home service businesses</p>
-  </section>
-</div>
-
-<div class="consumer">
-  <p><strong>Received a text?</strong> It came from a home service business you're a customer of, or one you just called. Reply <strong>STOP</strong> any time to opt out, or <strong>HELP</strong> for assistance. Details in our SMS Terms below.</p>
-</div>
-
-<footer>
+<main id="top">
+<section class="hero">
   <div>
-    <a href="privacy-policy.html">Privacy Policy</a>
-    <a href="sms-terms.html">SMS Terms &amp; Conditions</a>
-    <a href="tel:+15715137639">Support: (571) 513-7639</a>
+    <div class="eyebrow">AI operations for service businesses</div>
+    <h1>Every call, message and handoff, <i>in one quiet room.</i></h1>
+    <p class="lede">Rebooked is a privacy-first operations and communications layer. An AI front desk answers, your team picks up where it leaves off, and scheduling, follow-up and audits run from one command center. Built for dental practices and for the HVAC, roofing, plumbing, electrical, pest control, pool and lawn companies that live on the phone.</p>
+    <div class="btns"><a class="btn p" href="#demo">Request a demo</a><a class="btn s" href="#how">See how it works</a></div>
+    <div class="byline"><div><b>Company-owned data</b>Records stay with the practice or company by design.</div><div><b>Human handoffs</b>AI routes; your people decide.</div></div>
   </div>
-  <p class="copy">&copy; 2026 Rebooked. All rights reserved.</p>
-</footer>
 
+  <figure class="figure" aria-label="Command center product visual with synthetic demo data">
+    <div class="figcap"><span>Fig. 1: The command center</span><span class="tag">Synthetic demo data</span></div>
+    <div class="app">
+      <div class="apphead"><strong id="cc-name">Harbor Family Dental / command center</strong><span class="live">Live</span></div>
+      <div class="chips" role="group" aria-label="Preview a business type">
+        <button class="chip" type="button" data-v="Dental" aria-pressed="true">Dental</button>
+        <button class="chip" type="button" data-v="HVAC" aria-pressed="false">HVAC</button>
+        <button class="chip" type="button" data-v="Roofing" aria-pressed="false">Roofing</button>
+        <button class="chip" type="button" data-v="Plumbing" aria-pressed="false">Plumbing</button>
+        <button class="chip" type="button" data-v="Electrical" aria-pressed="false">Electrical</button>
+        <button class="chip" type="button" data-v="Pest Control" aria-pressed="false">Pest Control</button>
+        <button class="chip" type="button" data-v="Pool Service" aria-pressed="false">Pool</button>
+        <button class="chip" type="button" data-v="Lawn Care" aria-pressed="false">Lawn</button>
+      </div>
+      <div class="appgrid">
+        <div class="col">
+          <p class="h">Inbound and handoffs</p>
+          <div id="cc-rows"></div>
+        </div>
+        <div class="col">
+          <p class="h">Schedule today</p>
+          <div id="cc-slots"></div>
+          <div class="owned"><b>Audit trail on</b>Every AI reply and staff handoff is logged to your own workspace.</div>
+        </div>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<div class="verticals" aria-label="Business types served"><b>Built for:</b><span>Dental</span><span>HVAC</span><span>Roofing</span><span>Plumbing</span><span>Electrical</span><span>Pest Control</span><span>Pool Service</span><span>Lawn Care</span><span>Other service businesses</span></div>
+
+<section class="sec" id="how">
+  <div><div class="eyebrow">How it works</div><h2>One layer between the front door and the team.</h2><p class="intro">Rebooked sits on top of the tools you already use. It does not replace your practice management system or field service software; it keeps conversations and work from falling between them.</p></div>
+  <div class="list">
+    <div class="item"><span class="num">01</span><div><h3>AI front desk</h3><p>Answers inbound calls and texts, collects the details your team needs, and books into open windows you define.</p></div></div>
+    <div class="item"><span class="num">02</span><div><h3>Internal handoffs</h3><p>When a request needs a person, it lands in a shared inbox with context attached: who called, what they need, what was already said.</p></div></div>
+    <div class="item"><span class="num">03</span><div><h3>Scheduling</h3><p>Chairs, crews or technicians: the same view shows what is booked, what is pending and what still needs a confirm.</p></div></div>
+    <div class="item"><span class="num">04</span><div><h3>Follow-up</h3><p>Recall reminders, estimate follow-ups and seasonal service nudges, sent on rules your team approves.</p></div></div>
+    <div class="item"><span class="num">05</span><div><h3>Audits</h3><p>A reviewable log of every automated message and handoff, so you can check what was said and when.</p></div></div>
+  </div>
+</section>
+</main>
+</div>
+
+<section class="band" id="data">
+  <div class="shell sec">
+    <div><div class="eyebrow" style="color:#9cc0f5">Privacy-first</div><h2>Your records stay yours.</h2><p class="intro">The data belongs to the practice or the company. Rebooked is designed to work with it, not to collect it.</p></div>
+    <div class="cols3">
+      <div><h3>Company-owned</h3><p>Customer and patient records live in your systems and your workspace.</p></div>
+      <div><h3>Minimal by design</h3><p>The AI layer only needs what it takes to answer, route and schedule.</p></div>
+      <div><h3>Reviewable</h3><p>Audit logs let owners see exactly what the AI did on their behalf.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="shell">
+<section class="formwrap" id="demo">
+  <div class="formgrid">
+    <div><div class="eyebrow">Request a demo</div><h2 style="font-family:var(--serif);font-weight:500;font-size:clamp(34px,4vw,50px);line-height:1.05;margin:12px 0 16px">Walk through it with your own workflow.</h2><p style="color:var(--muted);font-size:17px">Tell us what kind of business you run and when works for you. We will set up a walkthrough using synthetic data shaped like your day.</p></div>
+    <form id="demo-form" action="https://formsubmit.co/ajax/dakquanlee@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Rebooked demo request (visual v2)">
+      <input type="hidden" name="_template" value="table">
+      <div class="hp" aria-hidden="true"><label for="v2-honey">Leave this field empty</label><input id="v2-honey" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+      <div class="fields">
+        <div><label for="v2-name">Name <span class="req">*</span></label><input id="v2-name" name="name" type="text" autocomplete="name" required></div>
+        <div><label for="v2-company">Company <span class="req">*</span></label><input id="v2-company" name="company" type="text" autocomplete="organization" required></div>
+        <div><label for="v2-email">Email <span class="req">*</span></label><input id="v2-email" name="email" type="email" autocomplete="email" required></div>
+        <div><label for="v2-phone">Phone <span class="req">*</span></label><input id="v2-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></div>
+        <div class="full"><label for="v2-type">Business type <span class="req">*</span></label><select id="v2-type" name="business_type" required><option value="">Select one</option><option>Dental</option><option>HVAC</option><option>Roofing</option><option>Plumbing</option><option>Electrical</option><option>Pest Control</option><option>Pool Service</option><option>Lawn Care</option><option>Other</option></select></div>
+        <div><label for="v2-date">Preferred date <span class="req">*</span></label><input id="v2-date" name="preferred_date" type="date" required></div>
+        <div><label for="v2-time">Preferred time <span class="req">*</span></label><select id="v2-time" name="preferred_time" required><option value="">Select a window</option><option>Morning (8am to 11am)</option><option>Midday (11am to 2pm)</option><option>Afternoon (2pm to 5pm)</option><option>Evening (5pm to 7pm)</option></select></div>
+        <div class="full"><label for="v2-msg">Message <span class="req">*</span></label><textarea id="v2-msg" name="message" required placeholder="What would you like the front desk to handle first?"></textarea></div>
+      </div>
+      <button class="submit" type="submit">Send demo request</button>
+      <p class="note">Submissions go to dakquanlee@gmail.com via FormSubmit. Fields marked * are required.</p>
+      <div class="msg ok" role="status" aria-live="polite" hidden>Thanks, your request was sent. We will reply by email to confirm a time.</div>
+      <div class="msg err" role="alert" aria-live="assertive" hidden>Something went wrong sending your request: <span></span> Please try again, or email dakquanlee@gmail.com directly.</div>
+    </form>
+  </div>
+</section>
+<footer><strong>rebooked</strong><span>Visual prototype. Product screens contain synthetic demo data only; names and appointments are fictional.</span></footer>
+</div>
+
+<script>
+// Synthetic demo content per vertical for the command-center preview.
+var DEMO = {
+  "Dental":{n:"Harbor Family Dental",rows:[["AI","AI front desk","New patient asking about a Saturday cleaning. Insurance info collected.","Needs handoff"],["MR","Maria, front desk","Picked up: confirming coverage before booking.","In progress"],["AI","AI follow-up","Recall reminder queued for 6-month hygiene list.","Scheduled"]],slots:[["8:00","Hygiene, Op 2"],["10:30","New patient exam"],["1:15","Crown seat, Op 1"]]},
+  "HVAC":{n:"Northline Heating & Air",rows:[["AI","AI front desk","No-heat call, furnace short-cycling. Address and unit age collected.","Needs handoff"],["DS","Dana, dispatch","Assigning to nearest available tech.","In progress"],["AI","AI follow-up","Fall tune-up reminders queued for maintenance plan list.","Scheduled"]],slots:[["8:00","No-heat diagnostic"],["11:00","Maintenance visit"],["2:30","Install estimate"]]},
+  "Roofing":{n:"Summit Ridge Roofing",rows:[["AI","AI front desk","Storm damage inquiry. Photos requested by text.","Needs handoff"],["JT","Jordan, estimator","Reviewing photos before booking inspection.","In progress"],["AI","AI follow-up","Estimate follow-up sent, day 3.","Sent"]],slots:[["9:00","Roof inspection"],["12:00","Estimate review call"],["3:00","Crew start, tear-off"]]},
+  "Plumbing":{n:"Clearwater Plumbing",rows:[["AI","AI front desk","Water heater leaking. Caller told how to shut off supply.","Needs handoff"],["SK","Sam, office","Moved to priority queue.","In progress"],["AI","AI follow-up","Drain service reminder for last spring's customers.","Scheduled"]],slots:[["8:30","Water heater swap"],["11:30","Drain cleaning"],["2:00","Repipe estimate"]]},
+  "Electrical":{n:"Brightline Electric",rows:[["AI","AI front desk","Panel upgrade question for EV charger. Photos requested.","Needs handoff"],["AL","Alex, office","Checking permit lead times.","In progress"],["AI","AI follow-up","Quote reminder sent for generator install.","Sent"]],slots:[["9:00","Panel upgrade quote"],["12:30","Outlet repair"],["3:30","EV charger install"]]},
+  "Pest Control":{n:"Greenshield Pest",rows:[["AI","AI front desk","Ant issue in kitchen. Quarterly plan explained.","Needs handoff"],["RB","Robin, office","Confirming service area.","In progress"],["AI","AI follow-up","Quarterly service reminders queued.","Scheduled"]],slots:[["8:00","Quarterly treatment"],["10:30","Termite inspection"],["1:00","Rodent follow-up"]]},
+  "Pool Service":{n:"Bluewater Pool Co.",rows:[["AI","AI front desk","Green pool after vacation. Weekly plan quoted.","Needs handoff"],["CM","Casey, route lead","Adding to Thursday route.","In progress"],["AI","AI follow-up","Opening-season reminders queued.","Scheduled"]],slots:[["8:00","Weekly route A"],["12:00","Pump repair"],["3:00","Green-to-clean"]]},
+  "Lawn Care":{n:"Fieldstone Lawn",rows:[["AI","AI front desk","Asking about aeration and overseeding. Lot size collected.","Needs handoff"],["PL","Pat, office","Building quote from lot size.","In progress"],["AI","AI follow-up","Fall cleanup sign-up reminders queued.","Scheduled"]],slots:[["7:30","Mow route, north"],["11:00","Aeration"],["2:00","Cleanup estimate"]]}
+};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function renderDemo(v){
+  var d=DEMO[v];
+  document.getElementById("cc-name").textContent=d.n+" / command center";
+  document.getElementById("cc-rows").innerHTML=d.rows.map(function(r){return '<div class="row"><span class="av">'+esc(r[0])+'</span><div><b>'+esc(r[1])+'</b><p>'+esc(r[2])+'</p></div><span class="st'+(r[3]==="Needs handoff"?" w":"")+'">'+esc(r[3])+'</span></div>'}).join("");
+  document.getElementById("cc-slots").innerHTML=d.slots.map(function(s,i){return '<div class="slot'+(i===0?" new":"")+'"><b>'+esc(s[0])+'</b><span>'+esc(s[1])+'</span></div>'}).join("");
+  document.querySelectorAll(".chip").forEach(function(c){c.setAttribute("aria-pressed",String(c.dataset.v===v))});
+}
+document.querySelectorAll(".chip").forEach(function(c){c.addEventListener("click",function(){renderDemo(c.dataset.v);document.getElementById("v2-type").value=c.dataset.v})});
+renderDemo("Dental");
+
+// Demo request form: POST JSON to FormSubmit AJAX endpoint.
+(function(){
+  var f=document.getElementById("demo-form"),ok=f.querySelector(".msg.ok"),err=f.querySelector(".msg.err"),btn=f.querySelector(".submit"),label=btn.textContent;
+  f.querySelector('input[type=date]').min=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
+  f.addEventListener("submit",function(e){
+    e.preventDefault();ok.hidden=true;err.hidden=true;
+    if(!f.checkValidity()){f.reportValidity();return}
+    var data=Object.fromEntries(new FormData(f));
+    if(data._honey){ok.hidden=false;f.reset();return} // bot filled the honeypot: pretend success, send nothing
+    btn.disabled=true;btn.textContent="Sending...";
+    fetch(f.action,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(data)})
+      .then(function(r){return r.json().catch(function(){return {}}).then(function(j){if(r.ok&&String(j.success)==="true"){ok.hidden=false;f.reset()}else{throw new Error(j.message||("Request failed ("+r.status+")."))}})})
+      .catch(function(x){
+        // FormSubmit may challenge programmatic fetches. Fall back to a native browser POST.
+        err.querySelector("span").textContent=(x.message||"Network error.")+" Retrying with the browser form submission...";err.hidden=false;
+        f.action="https://formsubmit.co/dakquanlee@gmail.com";
+        HTMLFormElement.prototype.submit.call(f);
+      })
+      .then(function(){btn.disabled=false;btn.textContent=label});
+  });
+})();
+</script>
 </body>
 </html>
