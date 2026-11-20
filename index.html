@@ -35,6 +35,7 @@
 .row b{font-size:12.5px;display:block}.row p{margin:2px 0 0;font-size:12px;color:var(--muted)}.st{font-size:10px;font-weight:800;color:var(--blue);white-space:nowrap}.st.w{color:#8a5a12}
 .slot{display:flex;justify-content:space-between;font-size:12px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;margin-bottom:6px;background:#fff}.slot span{color:var(--muted)}.slot.new{border-color:var(--blue);background:var(--ice)}
 .owned{margin-top:12px;background:var(--navy);color:#dbe6f6;border-radius:8px;padding:12px;font-size:12px}.owned b{color:#fff;display:block;margin-bottom:4px}
+.practicebar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);background:#fff}.metric{border:1px solid var(--line);border-radius:7px;padding:9px 10px}.metric b{display:block;font-size:18px;line-height:1}.metric span{display:block;color:var(--muted);font-size:9px;margin-top:4px}.metric em{font-style:normal;color:#16815c;font-size:9px}.agent{margin-top:12px;background:var(--navy);color:#dbe6f6;border-radius:8px;padding:11px;font-size:11px;line-height:1.45}.agent small{display:block;color:#9cc0f5;text-transform:uppercase;letter-spacing:.1em;font-size:9px;font-weight:800;margin-bottom:5px}.agent p{margin:0}.agent button{margin-top:8px;border:0;border-radius:4px;background:#fff;color:var(--navy);padding:6px 8px;font:700 10px var(--sans)}
 /* Sections */
 .verticals{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:14px;color:var(--muted)}.verticals b{color:var(--ink)}
 .sec{padding:96px 0;display:grid;grid-template-columns:.75fr 1.25fr;gap:72px}
@@ -55,7 +56,7 @@ input:focus,select:focus,textarea:focus{outline:3px solid var(--ice-2);border-co
 .msg{margin-top:16px;padding:14px;border-radius:8px;font-size:14px}.msg.ok{background:var(--ice);border:1px solid var(--blue);color:var(--navy)}.msg.err{background:#fff4f2;border:1px solid #e3a59a;color:#7a2416}
 footer{border-top:1px solid var(--line);padding:26px 0 40px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 @media(max-width:960px){.hero,.sec,.formgrid{grid-template-columns:1fr;gap:40px}.hero{padding:48px 0}.sec,.formwrap{padding:64px 0}.cols3{grid-template-columns:1fr}.nav a:not(.cta){display:none}}
-@media(max-width:640px){.shell{padding:0 18px}.appgrid{grid-template-columns:1fr}.col+.col{border-left:0;border-top:1px solid var(--line)}.fields{grid-template-columns:1fr}form{padding:20px}.byline{flex-direction:column}.btn{width:100%}}
+@media(max-width:640px){.shell{padding:0 18px}.appgrid{grid-template-columns:1fr}.practicebar{grid-template-columns:repeat(2,1fr)}.col+.col{border-left:0;border-top:1px solid var(--line)}.fields{grid-template-columns:1fr}form{padding:20px}.byline{flex-direction:column}.btn{width:100%}}
 </style>
 </head>
 <body>
@@ -76,30 +77,17 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;font-size:13px;color
     <div class="byline"><div><b>Company-owned data</b>Records stay with the practice or company by design.</div><div><b>Human handoffs</b>AI routes; your people decide.</div></div>
   </div>
 
-  <figure class="figure" aria-label="Command center product visual with synthetic demo data">
-    <div class="figcap"><span>Fig. 1: The command center</span><span class="tag">Synthetic demo data</span></div>
+  <figure class="figure" aria-label="Dental practice command center with synthetic demo data">
+    <div class="figcap"><span>Harbor Family Dental / command center</span><span class="tag">Synthetic demo data</span></div>
     <div class="app">
       <div class="apphead"><strong id="cc-name">Harbor Family Dental / command center</strong><span class="live">Live</span></div>
       <div class="chips" role="group" aria-label="Preview a business type">
-        <button class="chip" type="button" data-v="Dental" aria-pressed="true">Dental</button>
-        <button class="chip" type="button" data-v="HVAC" aria-pressed="false">HVAC</button>
-        <button class="chip" type="button" data-v="Roofing" aria-pressed="false">Roofing</button>
-        <button class="chip" type="button" data-v="Plumbing" aria-pressed="false">Plumbing</button>
-        <button class="chip" type="button" data-v="Electrical" aria-pressed="false">Electrical</button>
-        <button class="chip" type="button" data-v="Pest Control" aria-pressed="false">Pest Control</button>
-        <button class="chip" type="button" data-v="Pool Service" aria-pressed="false">Pool</button>
-        <button class="chip" type="button" data-v="Lawn Care" aria-pressed="false">Lawn</button>
+        <button class="chip" type="button" data-v="Dental" aria-pressed="true">Dental</button><button class="chip" type="button" data-v="HVAC" aria-pressed="false">HVAC</button><button class="chip" type="button" data-v="Roofing" aria-pressed="false">Roofing</button><button class="chip" type="button" data-v="Plumbing" aria-pressed="false">Plumbing</button><button class="chip" type="button" data-v="Electrical" aria-pressed="false">Electrical</button><button class="chip" type="button" data-v="Pest Control" aria-pressed="false">Pest Control</button><button class="chip" type="button" data-v="Pool Service" aria-pressed="false">Pool</button><button class="chip" type="button" data-v="Lawn Care" aria-pressed="false">Lawn</button>
       </div>
+      <div class="practicebar"><div class="metric"><b>7</b><span>Needs attention</span><em>2 urgent</em></div><div class="metric"><b>14</b><span>Open today</span><em>3 same-day</em></div><div class="metric"><b>31</b><span>Recall ready</span><em>8 high intent</em></div><div class="metric"><b>4</b><span>Plans waiting</span><em>2 follow-ups</em></div></div>
       <div class="appgrid">
-        <div class="col">
-          <p class="h">Inbound and handoffs</p>
-          <div id="cc-rows"></div>
-        </div>
-        <div class="col">
-          <p class="h">Schedule today</p>
-          <div id="cc-slots"></div>
-          <div class="owned"><b>Audit trail on</b>Every AI reply and staff handoff is logged to your own workspace.</div>
-        </div>
+        <div class="col"><p class="h">Patient inbox / needs attention</p><div id="cc-rows"></div><div class="agent"><small>Practice agent · suggested action</small><p>8 high-intent recall patients and 3 open hygiene windows found. Review an outreach sequence?</p><button type="button">Review suggested actions ↗</button></div></div>
+        <div class="col"><p class="h">Today / schedule health</p><div id="cc-slots"></div><div class="owned"><b>Audit trail on</b>AI replies, approvals and staff handoffs stay reviewable in your workspace.</div></div>
       </div>
     </div>
   </figure>
